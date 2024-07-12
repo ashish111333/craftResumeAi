@@ -1,39 +1,80 @@
-"""Welcome to Reflex! This file outlines the steps to create a basic app."""
+
 
 import reflex as rx
 
-from rxconfig import config
 
 
-class State(rx.State):
-    """The app state."""
-
-    ...
-
-
-def index() -> rx.Component:
-    # Welcome Page (Index)
-    return rx.container(
-        rx.color_mode.button(position="top-right"),
+def index()->rx.Component:
+    
+    return rx.box(
+        
         rx.vstack(
-            rx.heading("Welcome to Reflex!", size="9"),
-            rx.text(
-                "Get started by editing ",
-                rx.code(f"{config.app_name}/{config.app_name}.py"),
-                size="5",
-            ),
-            rx.link(
-                rx.button("Check out our docs!"),
-                href="https://reflex.dev/docs/getting-started/introduction/",
-                is_external=True,
-            ),
-            spacing="5",
-            justify="center",
-            min_height="85vh",
+    
+        rx.heading("CraftResume AI",size="9",
+        style={
+            "color":"white",
+            
+        }
+            
         ),
-        rx.logo(),
-    )
+        get_user_details(),
+        rx.button("Let's start",color_scheme="cyan",size="5",style={"border-radius":"40px"}),
+        
+        style={
 
+            "width":"100vw",
+            "height":"100vh",
+            
+            
+        },
+        
+        
+        align="center",
+        
+    ),
+    
+    )
+    
+
+
+
+def get_user_details()->rx.Component:
+      
+             
+    return rx.form(
+       
+       rx.vstack(
+           
+           rx.input(
+               
+               placeholder="enter your preffered role...",
+               size="3",
+               
+               
+           ),
+           rx.input(
+               placeholder="years of exp",
+               size="3",
+            ),
+            
+            align="center"
+           
+       ),
+    
+       
+
+       
+   ),
+   
+
+   
+
+   
+
+
+    
 
 app = rx.App()
 app.add_page(index)
+
+
