@@ -12,12 +12,19 @@ def index()->rx.Component:
     
         rx.heading("CraftResume AI",size="9",
         style={
-            "color":"white",
+            "color":"red",
             
         }
+        ),
+
+        rx.vstack(
+        user_details(),
+        skills(),
+
+        
             
         ),
-        get_user_details(),
+        
         rx.button("Let's start",color_scheme="cyan",size="5",style={"border-radius":"40px"}),
         
         style={
@@ -29,21 +36,62 @@ def index()->rx.Component:
         },
         
         
-        align="center",
+        
         
     ),
     
     )
     
 
+def skills()->rx.Component:
+    return rx.box(
 
+        
+        rx.vstack(
+            
+            rx.input("skill...= "),
 
-def get_user_details()->rx.Component:
+            rx.button("Add skill")
+            
+        ),
+        
+
+        style={
+
+            "width":"400px",
+            "length":"500px",
+            "box_shadow":"3px 10px",
+        },
+
+        
+    )
+
+    
+def education_details()->rx.Component:
+    return rx.box(
+
+      rx.vstack(
+          rx.hstack(
+             
+             rx.input(),
+             rx.input()
+              
+          )
+
+          
+      )
+        
+     
+        
+    )
+
+    
+def user_details()->rx.Component:
       
              
     return rx.form(
        
-       rx.vstack(
+       rx.hstack(
            
            rx.input(
                
@@ -56,23 +104,18 @@ def get_user_details()->rx.Component:
                placeholder="years of exp",
                size="3",
             ),
+           
             
             align="center"
            
        ),
-    
        
+    
 
        
    ),
    
 
-   
-
-   
-
-
-    
 
 app = rx.App()
 app.add_page(index)
